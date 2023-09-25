@@ -39,5 +39,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  error:
+                  message:
                     type: string
+                  code:
+                    type: int

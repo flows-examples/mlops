@@ -15,3 +15,11 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
   -d '{ "image": "src/main/resources/images/coco_image.jpg" }'
 ```
+
+## Deploy on Kubernetes
+
+To deploy it on Kubernetes, you should install the [SonataFlow Operator](https://sonataflow.org/serverlessworkflow/latest/cloud/operator/install-serverless-operator.html), and then deploy the service:
+
+```shell
+kubectl kustomize inference-pipeline-demo/ | kubectl apply -n <namespace> -f -
+```
