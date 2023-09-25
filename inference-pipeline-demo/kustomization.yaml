@@ -1,0 +1,22 @@
+resources:
+  - "01-sonataflow-platform.yaml"
+  - "02-sonataflow.yaml"
+generatorOptions:
+  disableNameSuffixHash: true
+configMapGenerator:
+  # Name given to the operator's managed configuration properties. We can safely  create one here and hand over to the operator to manage
+  - name: "inferencepipeline-props"
+    files:
+      - "application.properties"
+  # SonataFlow .spec.resources
+  - name: "inferencepipeline-specs"
+    files:
+      - "specs/model_openapi.yaml"
+  - name: "inferencepipeline-python"
+    files:
+      - "python/coco_class_names.py"
+      - "python/coco_to_kserve.py"
+      - "python/response_handler.py"
+  - name: "inferencepipeline-images"
+    files:
+      - "images/coco_image.jpg"
