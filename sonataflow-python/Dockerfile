@@ -14,6 +14,7 @@ ENV PATH="${PATH}:/home/kogito/.local/bin"
 
 COPY requirements.txt /home/kogito/serverless-workflow-project/
 
+RUN pip install numpy
 RUN pip install -r requirements.txt
 
 # TODO: run the add-extension script directly instead
