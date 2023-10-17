@@ -9,13 +9,12 @@ RUN microdnf install -y --nodocs python311 gcc python3.11-devel mesa-libGLU && \
 
 USER 1001
 
-ENV KOGITO_VERSION=1.44.1.Final
-ENV PATH="${PATH}:/home/kogito/.local/bin"
+ENV KOGITO_VERSION=1.44.1.Final PATH="${PATH}:/home/kogito/.local/bin" PYTHONPATH="/home/kogito/.local/bin"
 
 COPY requirements.txt /home/kogito/serverless-workflow-project/
 
-RUN pip install numpy
-RUN pip install -r requirements.txt
+RUN pip install numpy --target /home/kogito/.local/bin
+RUN pip install -r requirements.txt --target /home/kogito/.local/bin
 
 # TODO: run the add-extension script directly instead
 ENV QUARKUS_EXTENSIONS="org.kie.kogito:kogito-addons-quarkus-serverless-workflow-python:${KOGITO_VERSION}"
