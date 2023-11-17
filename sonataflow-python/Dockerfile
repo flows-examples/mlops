@@ -18,6 +18,7 @@ RUN pip install -r requirements.txt --target /home/kogito/.local/bin
 
 # TODO: run the add-extension script directly instead
 ENV QUARKUS_EXTENSIONS="org.kie.kogito:kogito-addons-quarkus-serverless-workflow-python:${KOGITO_VERSION}"
+ENV LD_LIBRARY_PATH="/home/kogito/.local/bin/jep:$LD_LIBRARY_PATH"
 
 # Define run cmd
 CMD ["/home/kogito/launch/run-app-devmode.sh"]
